@@ -3,6 +3,28 @@
 // Company: 
 // Engineer: 
 // 
+// Create Date: 04/17/2023 04:45:25 PM
+// Design Name: 
+// Module Name: pipeline_RISC_V
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
 // Create Date: 03/29/2023 01:48:21 PM
 // Design Name: 
 // Module Name: RISC_V_Processor
@@ -20,7 +42,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module RISC_V_Processor(
+module pipeline_RISC_V(
 input clk, reset,
 output [63:0] PC_In , 
 output[31:0] Instruction,
@@ -46,9 +68,9 @@ output [6:0] opcode
     wire [63:0] muxOut;
     //wire [63:0] result;
     //wire [63:0] ReadData;
-   
     //wire []
-    
+    wire [95:0] IFID;
+    wire [277:0] IDEX;
     
     Program_Counter PC(clk, reset, PC_In, PC_Out);
     
@@ -56,7 +78,10 @@ output [6:0] opcode
     
     Adder a1(PC_Out, 4, adderOut);
     
-    InsParser ip(Instruction, opcode, rd, funct3, rs1, rs2, funct7);
+    assign IFID[31:0] = Instruction;
+    assign IFID[95:32] = PC_Out;
+    
+    InsParser ip(IFID[31:0], opcode, rd, funct3, rs1, rs2, funct7);
     
     Control_Unit cu(opcode, Branch, MemRead, MemtoReg, MemWrite, ALUSrc, RegWrite, ALUOp);
     
@@ -79,3 +104,4 @@ output [6:0] opcode
     Mux m3(ReadData, result, MemtoReg, WriteData);
     
 endmodule
+
