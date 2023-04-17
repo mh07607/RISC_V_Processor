@@ -46,6 +46,7 @@ output [6:0] opcode
     wire [63:0] muxOut;
     //wire [63:0] result;
     //wire [63:0] ReadData;
+    wire [31:0] IFID;
     
     Program_Counter PC(clk, reset, PC_In, PC_Out);
     
