@@ -1,0 +1,69 @@
+# A: list of sortable items
+# n: length of A
+# i, j: loop variables
+# tmp: temporary storage for swapping
+
+
+
+
+
+# initialize A and n
+addi x3, x0, 7 #length_of_A
+addi x4, x0, 0 #A
+
+addi x10, x0, 5
+addi x5, x0, 4
+addi x6, x0, -1
+addi x7, x0, 2
+addi x8, x0, 1
+addi x9, x0, 69
+addi x11, x0, 8
+
+sw x10, 0(x4)
+sw x5, 4(x4)
+sw x6, 8(x4)
+sw x7, 12(x4)
+sw x8, 16(x4)
+sw x9, 20(x4)
+sw x11, 24(x4)
+
+
+
+# loop over all elements of A
+addi x12, x0, 1  # i = 1
+loop1:
+  blt x12, x3, continue  # if i < n, continue
+  j exit  # otherwise, exit
+
+continue:
+  # initialize j to i and load A[j]
+  add x13, x0, x12  # j = i
+  slli x14, x13, 2  # multiply by 4 to get offset
+  add x14, x14, x4  # add array base address
+  lw x15, 0(x14)  # load A[j]
+
+  loop2:
+    # check if j > 0 and A[j-1] > A[j]
+    beq x13, x0, end_loop2
+    addi x16, x13, -1  # x16 = j - 1
+    slli x17, x16, 2  # multiply by 4 to get offset
+    add x17, x17, x4  # add array base address
+    lw x18, 0(x17)  # load A[j-1]
+    blt x18, x15, end_loop2  # if A[j-1] <= A[j], exit loop2
+
+    # swap A[j] and A[j-1]
+    sw x18, 0(x14)  # store A[j-1] at A[j]
+    sw x15, 0(x17)  # store A[j] at A[j-1]
+    addi x13, x13, -1  # j = j - 1
+
+    # load A[j] for next iteration
+    slli x14, x13, 2  # multiply by 4 to get offset
+    add x14, x14, x4  # add array base address
+    lw x15, 0(x14)  # load A[j]
+    j loop2
+
+end_loop2:
+  addi x12, x12, 1  # i = i + 1
+  j loop1
+
+exit:

@@ -78,20 +78,25 @@ output [6:0] opcode
     
     Adder a1(PC_Out, 4, adderOut);
     
-    assign IFID[31:0] = Instruction;
+    assign IFID[31:0] = Instruction;  //IF/ID stage
     assign IFID[95:32] = PC_Out;
     
     InsParser ip(IFID[31:0], opcode, rd, funct3, rs1, rs2, funct7);
     
     Control_Unit cu(opcode, Branch, MemRead, MemtoReg, MemWrite, ALUSrc, RegWrite, ALUOp);
     
-    ImmGen ig(Instruction, imm_data);
+    ImmGen ig(IFID[31:0], imm_data);
+    
+    registerFile rf(WriteData, rs1, rs2, rd, RegWrite, clk, reset, ReadData1, ReadData2);
+    
+    assign IDEX[63:0] = IFID[95:32];  //ID/EX stage
+    assign IDEX[127:64] = ReadData1;
+    assign IDEX[191:128] = ReadData2;
+    assign IDEX[255:192] = ReadData1;
     
     Adder a2(PC_Out, imm_data*2, adder2Out);
     
     ALU_Control ac(ALUOp, {Instruction[30], funct3}, Operation);
-    
-    registerFile rf(WriteData, rs1, rs2, rd, RegWrite, clk, reset, ReadData1, ReadData2);
     
     Mux m1(ReadData2, imm_data, ALUSrc, muxOut);
     

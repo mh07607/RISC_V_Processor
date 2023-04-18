@@ -1,0 +1,59 @@
+
+addi x3, x0, 5 #length of an array of 5
+addi x17, x0, 0x0 #array address
+addi x12, x0, 1 #i
+addi x13, x0, 0 #j
+
+addi x4, x0, 5
+addi x5, x0, 4
+addi x6, x0, 3
+addi x7, x0, 2
+addi x8, x0, 1
+
+sw x4, 0(x17)
+sw x5, 4(x17)
+sw x6, 8(x17)
+sw x7, 12(x17)
+sw x8, 16(x17)
+
+
+loop1:
+	addi sp, sp, -20 #allocating memory in stack
+        
+    sw x14, 0(sp) #uploading register values to stack
+    sw x15, 4(sp)
+    sw x16, 8(sp)
+    sw x18, 12(sp)
+    sw x19, 16(sp)
+    add x13, x0, x12 #j = i
+    beq x12, x3, exit #if i == len(arr) exit
+    
+	loop2:
+    	beq x13, x0, loop1 #if j = 0, go to loop1
+        
+        
+        slli x16, x13, 2 #offset pakar rha hu
+        add x18, x17, x16 #jth index
+        addi x19, x18, -4 #(j-1)th index
+        lw x14, 0(x18) #accessing x14 = arr[j]
+        lw x15, 0(x19) #x15 = arr[j+1]
+ 
+        bgt x14, x15, loop1 #if arr[j] > arr[j-1] break
+        beq x14, x15, loop1 #if arr[j] == arr[j-1] break
+        
+        sw x15, 0(x18) #swapping values, don't need a temp variable because we are using values stored in registers not memory
+        sw x14, 0(x19)
+        addi x13, x13, -1 #j=j-1
+        
+        beq x0, x0, loop2 #go back to inner while loop
+        
+        lw x14, 0(sp) #restoring register values from stack
+        lw x15, 4(sp)
+        lw x16, 8(sp)
+        lw x18, 12(sp)
+        lw x19, 16(sp)
+        addi sp, sp, 20 #deallocating memory from stack
+        addi x12, x12, 1 # i = i+1
+        blt x12, x3, loop1
+      
+exit:	
