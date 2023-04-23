@@ -91,9 +91,13 @@ output [6:0] opcode
     
     Instruction_Memory im(PC_Out, Instruction);
     
-    Adder a1(PC_Out, 4, adderOut);
+    Adder a1(PC_Out, 1, adderOut);
+    
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     IFID ifid(clk, reset, Instruction, PC_Out, IFID_PC_Out, IFID_Instruction);
+    
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     InsParser ip(IFID_Instruction, opcode, rd, funct3, rs1, rs2, funct7);
     
@@ -102,6 +106,8 @@ output [6:0] opcode
     ImmGen ig(IFID_Instruction, imm_data);
     
     registerFile rf(WriteData, rs1, rs2, rd, RegWrite, clk, reset, ReadData1, ReadData2);
+    
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     IDEX idex(clk, reset,
     PC_Out, 
@@ -122,22 +128,28 @@ output [6:0] opcode
     IDEX_rs1, IDEX_rs2, IDEX_rd,
     IDEX_funct, IDEX_WB, IDEX_M, IDEX_EX);
     
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
     Adder a2(IDEX_PC_Out, IDEX_imm_data*2, adder2Out);
     
     ALU_Control ac(IDEX_EX[1:0], IDEX_funct, Operation);
-    
-    Mux m1(IDEX_ReadData2, IDEX_imm_data, IDEX_EX[2], muxOut);
-    
-    ALU_64_bit alu64(IDEX_ReadData1, muxOut, Operation, result, zero);
     
     Mux_three_to_one m4(mux4out);
     
     Mux_three_to_one m5(mux5out);
     
+    Mux m1(mux5out, IDEX_imm_data, IDEX_EX[2], muxOut);
+    
+    ALU_64_bit alu64(mux4out, muxOut, Operation, result, zero);
+    
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
     EXMEM exmem(clk, reset, 
     adder2Out,
     result,
-    v);
+    mux5out);
+    
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     Mux m2(adderOut, adder2Out, (Branch & zero), PC_In);
     
