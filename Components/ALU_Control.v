@@ -9,7 +9,13 @@ module ALU_Control
 	begin
 		case(ALUOp)
 			2'b00: Operation = 4'b0010;
-			2'b01: Operation = 4'b0110;
+			2'b01: 
+			begin 
+			case(Funct)
+			    4'b0100:Operation = 4'b1110; //Generating new control signal in case of blt
+			    default:Operation = 4'b0110;			    
+			endcase
+			end
 			2'b10:
 			begin 
 			case(Funct)

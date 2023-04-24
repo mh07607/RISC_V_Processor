@@ -1,17 +1,17 @@
 # compile verilog/system verilog design source files
 verilog xil_defaultlib  \
-"../../../../../Lab11/Design/ALU_64_bit.v" \
-"../../../../../Lab11/Design/ALU_Control.v" \
-"../../../../../Lab11/Design/Adder.v" \
-"../../../../../Lab11/Design/Control_Unit.v" \
-"../../../../../Lab11/Design/Data_Memory.v" \
-"../../../../../Lab11/Design/ImmGen.v" \
-"../../../../../Lab11/Design/InsParser.v" \
-"../../../../../Lab11/Design/Instruction_Memory.v" \
-"../../../../../Lab11/Design/Mux.v" \
-"../../../../../Lab11/Design/Program_Counter.v" \
+"../../../../Components/ALU_64_bit.v" \
+"../../../../Components/ALU_Control.v" \
+"../../../../Components/Adder.v" \
+"../../../../Components/Control_Unit.v" \
+"../../../../Components/Data_Memory.v" \
+"../../../../Components/ImmGen.v" \
+"../../../../Components/InsParser.v" \
+"../../../../Components/Instruction_Memory.v" \
+"../../../../Components/Mux.v" \
+"../../../../Components/Program_Counter.v" \
 "../../../../RISC_V_Processor.srcs/sources_1/new/RISC_V_Processor.v" \
-"../../../../../Lab11/Design/registerFile.v" \
+"../../../../Components/registerFile.v" \
 "../../../../RISC_V_Processor.srcs/sim_1/new/tb_RISC_V.v" \
 
 # compile glbl module

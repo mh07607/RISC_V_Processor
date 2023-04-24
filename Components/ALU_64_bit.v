@@ -8,12 +8,13 @@ module ALU_64_bit
 	output ZERO
 );
 
-localparam [3:0]
+localparam [4:0]
 AND = 4'b0000,
 OR	= 4'b0001,
 ADD	= 4'b0010,
 Sub	= 4'b0110,
-NOR = 4'b1100;
+NOR = 4'b1100,
+BLT = 4'b1110;     //case for BLT operation
 
 assign ZERO = (Result == 0);
 
@@ -25,7 +26,7 @@ begin
 		ADD: Result = a + b;
 		Sub: Result = a - b;
 		NOR: Result = ~(a | b);
-		
+		BLT: Result = (a < b)? 0: -1; //if a < b, result = 0 meaning ZERO is set to 1 which will trigger PC to shift to immediate address
 		default: Result = 0;
 	endcase
 end

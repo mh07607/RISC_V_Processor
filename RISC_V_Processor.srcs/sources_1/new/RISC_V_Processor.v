@@ -31,15 +31,16 @@ result,
 ReadData, 
 output Branch, zero, ALUSrc, MemRead, MemtoReg, MemWrite, RegWrite,
 output[1:0] ALUOp,
-output [6:0] opcode
+output [6:0] opcode,
+output [2:0] funct3,
+output [6:0] funct7,
+output [3:0] Operation
 );
     
     //wire [63:0] PC_In;
     wire [63:0] PC_Out; 
     //wire [31:0] Instruction;
-    
-    wire [3:0] Operation;
-    wire [63:0] adderOut;
+    wire [63:0] adderOut, adder2Out;
     //wire [63:0] WriteData;
     //wire [63:0] ReadData1, ReadData2;
     //wire [63:0] imm_data;
@@ -62,7 +63,7 @@ output [6:0] opcode
     
     ImmGen ig(Instruction, imm_data);
     
-    Adder a2(PC_Out, imm_data*2, adder2Out);
+    Adder a2(PC_Out, imm_data<<1, adder2Out); //imm_data * 2
     
     ALU_Control ac(ALUOp, {Instruction[30], funct3}, Operation);
     
@@ -72,9 +73,9 @@ output [6:0] opcode
     
     ALU_64_bit alu64(ReadData1, muxOut, Operation, result, zero);
     
-    Mux m2(adderOut, adder2Out, (Branch & zero), PC_In);
+    Mux m2(adderOut, adder2Out, (Branch && zero), PC_In); //
     
-    Data_Memory dm(result, Read_Data2, clk, MemWrite, MemRead, ReadData);
+    Data_Memory dm(result, ReadData2, clk, MemWrite, MemRead, ReadData);
     
     Mux m3(ReadData, result, MemtoReg, WriteData);
     

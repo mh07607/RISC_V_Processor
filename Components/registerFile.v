@@ -11,11 +11,13 @@ module registerFile
   reg[63:0] Registers [31:0];    //initialize Registers with random values (using 'initial' block)
   initial    
     begin    
-      Registers[0] = 64'd1;    
+      Registers[0] = 64'd0;    
       Registers[1] = 64'd2;    
-      Registers[2] = 64'd3;    
-      Registers[3] = 64'd4;    
-      Registers[4] = 64'd5;    
+      Registers[2] = 64'd3;
+          
+      Registers[3] = 64'd7;    //length_of_A
+      Registers[4] = 64'd0;    //A
+          
       Registers[5] = 64'd6;    
       Registers[6] = 64'd7;    
       Registers[7] = 64'd8;    
@@ -26,10 +28,10 @@ module registerFile
       Registers[12] = 64'd13;    
       Registers[13] = 64'd14;    
       Registers[14] = 64'd15;    
-      Registers[15] = 64'd16;    
+      Registers[15] = 64'd19;    
       Registers[16] = 64'd17;    
       Registers[17] = 64'd18;    
-      Registers[18] = 64'd19;    
+      Registers[18] = 64'd16;    
       Registers[19] = 64'd20;    
       Registers[20] = 64'd21;    
       Registers[21] = 64'd22;    
@@ -58,13 +60,13 @@ module registerFile
     begin   
       if(reset)  
         begin    
-          ReadData1 = 64'b0;    
-          ReadData2 = 64'b0;   
+          ReadData1 <= 64'b0;    
+          ReadData2 <= 64'b0;   
         end   
       else   
         begin    
-          ReadData1 = Registers[RS1];    
-          ReadData2 = Registers[RS2];   
+          ReadData1 <= Registers[RS1];    
+          ReadData2 <= Registers[RS2];   
         end  
     end  
 endmodule 
