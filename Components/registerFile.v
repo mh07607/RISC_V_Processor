@@ -1,6 +1,6 @@
 module registerFile 
-  (  input [63:0]WriteData,  
-     input [4:0]RS1,  
+  (input [63:0]WriteData,  
+   input [4:0]RS1,  
    input [4:0]RS2,  
    input [4:0]RD,  
    input RegWrite, clk, reset,  
@@ -25,7 +25,7 @@ module registerFile
       Registers[9] = 64'd10;    
       Registers[10] = 64'd11;    
       Registers[11] = 64'd12;    
-      Registers[12] = 64'd13;    
+      Registers[12] = 0;    
       Registers[13] = 64'd14;    
       Registers[14] = 64'd15;    
       Registers[15] = 64'd19;    

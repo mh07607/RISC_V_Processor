@@ -38,6 +38,7 @@ module tb_RISC_V(
     wire [2:0] funct3;
     wire [3:0] Operation;
     wire [6:0] funct7;
+    wire [63:0] muxOut;
     
 RISC_V_Processor risk(clk, reset, PC_In, 
 Instruction,
@@ -49,8 +50,8 @@ ReadData,
 Branch,
 zero,ALUSrc, MemRead, MemtoReg, MemWrite, RegWrite, ALUOp, 
 opcode,
-funct3, funct7, Operation);
-    
+funct3, funct7, Operation, muxOut);
+
 //RISC_V_Processor(
 //input clk, reset,
 //output [63:0] PC_In , 

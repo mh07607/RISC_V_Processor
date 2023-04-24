@@ -74,8 +74,8 @@ module Data_Memory
 		DataMemory[61] = 8'd0;
 		DataMemory[62] = 8'd0;
 		DataMemory[63] = 8'd0;
-		DataMemory[144] = 8'd5;
-		DataMemory[120] = 8'd6;
+		//DataMemory[144] = 8'd5;
+		//DataMemory[120] = 8'd6;
 	end
 	
 	always @ (*)

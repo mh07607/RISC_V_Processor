@@ -34,7 +34,8 @@ output[1:0] ALUOp,
 output [6:0] opcode,
 output [2:0] funct3,
 output [6:0] funct7,
-output [3:0] Operation
+output [3:0] Operation,
+output [63:0] muxOut
 );
     
     //wire [63:0] PC_In;
@@ -44,7 +45,7 @@ output [3:0] Operation
     //wire [63:0] WriteData;
     //wire [63:0] ReadData1, ReadData2;
     //wire [63:0] imm_data;
-    wire [63:0] muxOut;
+    
     //wire [63:0] result;
     //wire [63:0] ReadData;
    
@@ -77,6 +78,6 @@ output [3:0] Operation
     
     Data_Memory dm(result, ReadData2, clk, MemWrite, MemRead, ReadData);
     
-    Mux m3(ReadData, result, MemtoReg, WriteData);
+    Mux m3(result, ReadData, MemtoReg, WriteData);
     
 endmodule
