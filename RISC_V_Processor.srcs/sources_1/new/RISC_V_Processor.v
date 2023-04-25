@@ -47,7 +47,9 @@ element_6, //array elements
 ith_address, //address of array[i], array[j] 
 jth_address,
 i,
-j 
+j,
+array_j,
+array_j_1 
 );
     
     //wire [63:0] PC_In;
@@ -83,7 +85,8 @@ j
     registerFile rf(WriteData, rs1, rs2, rd, RegWrite, clk, reset, ReadData1, ReadData2,
     ith_address, //address of array[i], array[j] 
     jth_address,
-    i,j);
+    i,j,
+    array_j, array_j_1);
     
     Mux m1(ReadData2, imm_data, ALUSrc, muxOut);
     

@@ -47,7 +47,10 @@ module tb_RISC_V(
     element_5,
     element_6, //array elements
     ith_address, //address of array[i], array[j] 
-    jth_address; 
+    jth_address,
+    array_j,
+    array_j_1,
+    i, j; 
     
 RISC_V_Processor risk(clk, reset, PC_In, 
 Instruction,
@@ -68,7 +71,8 @@ funct3, funct7, Operation, muxOut,
     element_5,
     element_6, //array elements
     ith_address, //address of array[i], array[j] 
-    jth_address);
+    jth_address,
+    i, j, array_j, array_j_1);
 
 //RISC_V_Processor(
 //input clk, reset,

@@ -8,8 +8,8 @@ module registerFile
    output reg [63:0]ReadData2,
    output [63:0] ith_address, //address of array[i], array[j] 
    jth_address,
-   i,
-   j   
+   i,j,
+   array_j, array_j_1   
   ); 
   
   reg[63:0] Registers [31:0];    //initialize Registers with random values (using 'initial' block)
@@ -53,6 +53,8 @@ module registerFile
  
  assign i = Registers[12];
  assign j = Registers[13];
+ assign array_j = Registers[15];
+ assign array_j_1 = Registers[18];
  assign ith_address = Registers[14];
  assign jth_address = Registers[17];
  //operation of writing data into a Register should always be done when  

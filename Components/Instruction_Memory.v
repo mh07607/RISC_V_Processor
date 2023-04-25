@@ -47,11 +47,11 @@ module Instruction_Memory
         inst_mem[28] = 8'b00010011;      //addi x16, x13, -1 # (x16 = j - 1) //9  
         inst_mem[29] = 8'b10001000;
         inst_mem[30] = 8'b11110110;
-        inst_mem[31] = 8'b11111111;
+        inst_mem[31] = 8'b11111111;        
         
         inst_mem[32] = 8'b10010011; //slli x17, x16, 3* (not sure if this will be needed) //10
         inst_mem[33] = 8'b00011000;    
-        inst_mem[34] = 8'b00101000;
+        inst_mem[34] = 8'b00111000;
         inst_mem[35] = 8'b00000000;
         
         inst_mem[36] = 8'b10110011;   //add x17, x17, x4  # add array base address //11
@@ -66,9 +66,11 @@ module Instruction_Memory
          // loop2 //
 //        00000010 00000110 10001010 01100011 //beq x13, x0, end_loop2 //8
 //        11111111 11110110 10001000 00010011 //addi x16, x13, -1 # (x16 = j - 1) //9
-//        00000000 00101000 00011000 10010011 //slli x17, x16, 3* (not sure if this will be needed) //10
+//        00000000 00111000 00011000 10010011 //slli x17, x16, 3* (not sure if this will be needed) //10
+          
 //        00000000 01001000 10001000 10110011 //add x17, x17, x4  # add array base address //11
 //        00000000 00001000 10111001 00000011 //ld* x18, 0(x17)  # load A[j-1] //12
+
         
         inst_mem[44]=8'b01100011; //blt x18, x15 end_loop2  # if A[j-1] < A[j], exit loop2 //13
 		inst_mem[45]=8'b01000000; 
