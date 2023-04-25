@@ -53,19 +53,32 @@ result,
 ReadData, 
 output Branch, zero, ALUSrc, MemRead, MemtoReg, MemWrite, RegWrite,
 output[1:0] ALUOp,
-output [6:0] opcode
+output [6:0] opcode,
+output [2:0] funct3,
+output [6:0] funct7,
+output [3:0] Operation,
+output [63:0] muxOut,
+output [63:0] element_0,
+element_1,
+element_2,
+element_3,
+element_4,
+element_5,
+element_6, //array elements
+ith_address, //address of array[i], array[j] 
+jth_address,
+i,
+j,
+array_j,
+array_j_1 
 );
-    
     //wire [63:0] PC_In;
     wire [63:0] PC_Out; 
     //wire [31:0] Instruction;
-    
-    wire [3:0] Operation;
-    wire [63:0] adderOut;
+    wire [63:0] adderOut, adder2Out;
     //wire [63:0] WriteData;
     //wire [63:0] ReadData1, ReadData2;
     //wire [63:0] imm_data;
-    wire [63:0] muxOut;
     wire [63:0] mux4out, mux5out;
     //wire [63:0] result;
     //wire [63:0] ReadData;
@@ -84,14 +97,20 @@ output [6:0] opcode
     wire [2:0] IDEX_EX;
     
     wire [63:0] EXMEM_adder2out;    //EXMEM registers
+    wire EXMEM_RegWrite; 
+    wire [4:0] EXMEM_rd;
     
+    wire Mem_WB_RegWrite;
+    wire [4:0] Mem_WB_RD;
+    
+    wire [1:0] ForwardA, ForwardB;
     
     
     Program_Counter PC(clk, reset, PC_In, PC_Out);
     
     Instruction_Memory im(PC_Out, Instruction);
     
-    Adder a1(PC_Out, 1, adderOut);
+    Adder a1(PC_Out, 4, adderOut);
     
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
@@ -105,7 +124,11 @@ output [6:0] opcode
     
     ImmGen ig(IFID_Instruction, imm_data);
     
-    registerFile rf(WriteData, rs1, rs2, rd, RegWrite, clk, reset, ReadData1, ReadData2);
+    registerFile rf(WriteData, rs1, rs2, rd, RegWrite, clk, reset, ReadData1, ReadData2, 
+    ith_address, //address of array[i], array[j] 
+    jth_address,
+    i,j,
+    array_j, array_j_1);
     
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
@@ -132,6 +155,14 @@ output [6:0] opcode
     
     Adder a2(IDEX_PC_Out, IDEX_imm_data*2, adder2Out);
     
+    Forwarding_Unit forwarding_unit(
+    Ex_Mem_RegWrite, 
+    Ex_Mem_RD, ID_Ex_RS1, ID_Ex_Rs2,
+    Mem_WB_RegWrite,
+    Mem_WB_RD,
+    ForwardA, ForwardB
+    );
+    
     ALU_Control ac(IDEX_EX[1:0], IDEX_funct, Operation);
     
     Mux_three_to_one m4(mux4out);
@@ -145,17 +176,29 @@ output [6:0] opcode
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     EXMEM exmem(clk, reset, 
-    adder2Out,
-    result,
-    mux5out);
+input [63:0] IDEX_PC_Out, ALU_out, ALU_input2,
+input [4:0] rd, 
+input branch,
+ input [1:0] write_back, Mem, 
+ output reg [63:0] PC_ADD, ALU_output, ALU_second,
+ output reg [4:0] dest_res,
+ output reg [1:0] WB,
+ output reg MemRead, MemWrite,Branch);;
     
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     Mux m2(adderOut, adder2Out, (Branch & zero), PC_In);
     
-    Data_Memory dm(result, Read_Data2, clk, MemWrite, MemRead, ReadData);
+    Data_Memory dm(result, ReadData2, clk, MemWrite, MemRead, ReadData,
+    element_0,
+    element_1,
+    element_2,
+    element_3,
+    element_4,
+    element_5,
+    element_6);
     
-    Mux m3(ReadData, result, MemtoReg, WriteData);
+    Mux m3(result, ReadData, MemtoReg, WriteData);
     
 endmodule
 

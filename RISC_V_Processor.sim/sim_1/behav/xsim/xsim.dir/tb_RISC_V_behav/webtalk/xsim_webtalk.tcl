@@ -1,6 +1,6 @@
 webtalk_init -webtalk_dir D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/RISC_V_Processor.sim/sim_1/behav/xsim/xsim.dir/tb_RISC_V_behav/webtalk/
 webtalk_register_client -client project
-webtalk_add_data -client project -key date_generated -value "Tue Apr 25 11:37:09 2023" -context "software_version_and_target_device"
+webtalk_add_data -client project -key date_generated -value "Tue Apr 25 11:40:47 2023" -context "software_version_and_target_device"
 webtalk_add_data -client project -key product_version -value "XSIM v2020.1 (64-bit)" -context "software_version_and_target_device"
 webtalk_add_data -client project -key build_version -value "2902540" -context "software_version_and_target_device"
 webtalk_add_data -client project -key os_platform -value "WIN64" -context "software_version_and_target_device"
@@ -14,7 +14,7 @@ webtalk_add_data -client project -key target_package -value "not_applicable" -co
 webtalk_add_data -client project -key target_speed -value "not_applicable" -context "software_version_and_target_device"
 webtalk_add_data -client project -key random_id -value "f0e28ff4-b08c-40e3-9aca-0bce8f31add4" -context "software_version_and_target_device"
 webtalk_add_data -client project -key project_id -value "19fcf5150a16499bb597f87ebc41d4c9" -context "software_version_and_target_device"
-webtalk_add_data -client project -key project_iteration -value "86" -context "software_version_and_target_device"
+webtalk_add_data -client project -key project_iteration -value "88" -context "software_version_and_target_device"
 webtalk_add_data -client project -key os_name -value "Windows Server 2016 or Windows 10" -context "user_environment"
 webtalk_add_data -client project -key os_release -value "major release  (build 9200)" -context "user_environment"
 webtalk_add_data -client project -key cpu_name -value "Intel(R) Core(TM) i5-4300U CPU @ 1.90GHz" -context "user_environment"
@@ -36,7 +36,7 @@ webtalk_add_data -client xsim -key Total_Nets -value "0" -context "xsim\\usage"
 webtalk_add_data -client xsim -key Total_Processes -value "86" -context "xsim\\usage"
 webtalk_add_data -client xsim -key Total_Instances -value "17" -context "xsim\\usage"
 webtalk_add_data -client xsim -key Xilinx_HDL_Libraries_Used -value "secureip unimacro_ver unisims_ver " -context "xsim\\usage"
-webtalk_add_data -client xsim -key Compiler_Time -value "2.26_sec" -context "xsim\\usage"
-webtalk_add_data -client xsim -key Compiler_Memory -value "65788_KB" -context "xsim\\usage"
-webtalk_transmit -clientid 2971765283 -regid "" -xml D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/RISC_V_Processor.sim/sim_1/behav/xsim/xsim.dir/tb_RISC_V_behav/webtalk/usage_statistics_ext_xsim.xml -html D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/RISC_V_Processor.sim/sim_1/behav/xsim/xsim.dir/tb_RISC_V_behav/webtalk/usage_statistics_ext_xsim.html -wdm D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/RISC_V_Processor.sim/sim_1/behav/xsim/xsim.dir/tb_RISC_V_behav/webtalk/usage_statistics_ext_xsim.wdm -intro "<H3>XSIM Usage Report</H3><BR>"
+webtalk_add_data -client xsim -key Compiler_Time -value "2.30_sec" -context "xsim\\usage"
+webtalk_add_data -client xsim -key Compiler_Memory -value "65804_KB" -context "xsim\\usage"
+webtalk_transmit -clientid 457224977 -regid "" -xml D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/RISC_V_Processor.sim/sim_1/behav/xsim/xsim.dir/tb_RISC_V_behav/webtalk/usage_statistics_ext_xsim.xml -html D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/RISC_V_Processor.sim/sim_1/behav/xsim/xsim.dir/tb_RISC_V_behav/webtalk/usage_statistics_ext_xsim.html -wdm D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/RISC_V_Processor.sim/sim_1/behav/xsim/xsim.dir/tb_RISC_V_behav/webtalk/usage_statistics_ext_xsim.wdm -intro "<H3>XSIM Usage Report</H3><BR>"
 webtalk_terminate
