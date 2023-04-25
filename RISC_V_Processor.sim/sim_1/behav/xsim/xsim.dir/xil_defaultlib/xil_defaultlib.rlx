@@ -2,17 +2,17 @@
 2020.1
 May 27 2020
 20:09:33
-D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/Components/ALU_64_bit.v,1682323147,verilog,,D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/Components/ALU_Control.v,,ALU_64_bit,,,,,,,,
-D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/Components/ALU_Control.v,1682323058,verilog,,D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/Components/Adder.v,,ALU_Control,,,,,,,,
+D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/Components/ALU_64_bit.v,1682393616,verilog,,D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/Components/ALU_Control.v,,ALU_64_bit,,,,,,,,
+D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/Components/ALU_Control.v,1682393479,verilog,,D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/Components/Adder.v,,ALU_Control,,,,,,,,
 D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/Components/Adder.v,1679874300,verilog,,D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/Components/Control_Unit.v,,Adder,,,,,,,,
 D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/Components/Control_Unit.v,1680083562,verilog,,D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/Components/Data_Memory.v,,Control_Unit,,,,,,,,
-D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/Components/Data_Memory.v,1682333734,verilog,,D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/Components/ImmGen.v,,Data_Memory,,,,,,,,
+D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/Components/Data_Memory.v,1682389457,verilog,,D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/Components/ImmGen.v,,Data_Memory,,,,,,,,
 D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/Components/ImmGen.v,1679874300,verilog,,D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/Components/InsParser.v,,ImmGen,,,,,,,,
 D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/Components/InsParser.v,1681727968,verilog,,D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/Components/Instruction_Memory.v,,InsParser,,,,,,,,
 D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/Components/Instruction_Memory.v,1682332480,verilog,,D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/Components/Mux.v,,Instruction_Memory,,,,,,,,
 D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/Components/Mux.v,1679874300,verilog,,D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/Components/Program_Counter.v,,Mux,,,,,,,,
 D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/Components/Program_Counter.v,1679874300,verilog,,D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/RISC_V_Processor.srcs/sources_1/new/RISC_V_Processor.v,,Program_Counter,,,,,,,,
-D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/Components/registerFile.v,1682329619,verilog,,D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/RISC_V_Processor.srcs/sim_1/new/tb_RISC_V.v,,registerFile,,,,,,,,
+D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/Components/registerFile.v,1682334409,verilog,,D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/RISC_V_Processor.srcs/sim_1/new/tb_RISC_V.v,,registerFile,,,,,,,,
 D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/RISC_V_Processor.sim/sim_1/behav/xsim/glbl.v,1590624368,verilog,,,,glbl,,,,,,,,
-D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/RISC_V_Processor.srcs/sim_1/new/tb_RISC_V.v,1682316678,verilog,,,,tb_RISC_V,,,,,,,,
+D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/RISC_V_Processor.srcs/sim_1/new/tb_RISC_V.v,1682334242,verilog,,,,tb_RISC_V,,,,,,,,
 D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/RISC_V_Processor.srcs/sources_1/new/RISC_V_Processor.v,1682334781,verilog,,D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/Components/registerFile.v,,RISC_V_Processor,,,,,,,,

@@ -35,7 +35,19 @@ output [6:0] opcode,
 output [2:0] funct3,
 output [6:0] funct7,
 output [3:0] Operation,
-output [63:0] muxOut
+output [63:0] muxOut,
+
+output [63:0] element_0,
+element_1,
+element_2,
+element_3,
+element_4,
+element_5,
+element_6, //array elements
+ith_address, //address of array[i], array[j] 
+jth_address,
+i,
+j 
 );
     
     //wire [63:0] PC_In;
@@ -68,7 +80,10 @@ output [63:0] muxOut
     
     ALU_Control ac(ALUOp, {Instruction[30], funct3}, Operation);
     
-    registerFile rf(WriteData, rs1, rs2, rd, RegWrite, clk, reset, ReadData1, ReadData2);
+    registerFile rf(WriteData, rs1, rs2, rd, RegWrite, clk, reset, ReadData1, ReadData2,
+    ith_address, //address of array[i], array[j] 
+    jth_address,
+    i,j);
     
     Mux m1(ReadData2, imm_data, ALUSrc, muxOut);
     
@@ -76,7 +91,14 @@ output [63:0] muxOut
     
     Mux m2(adderOut, adder2Out, (Branch && zero), PC_In); //
     
-    Data_Memory dm(result, ReadData2, clk, MemWrite, MemRead, ReadData);
+    Data_Memory dm(result, ReadData2, clk, MemWrite, MemRead, ReadData,
+    element_0,
+    element_1,
+    element_2,
+    element_3,
+    element_4,
+    element_5,
+    element_6);
     
     Mux m3(result, ReadData, MemtoReg, WriteData);
     

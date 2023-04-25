@@ -28,7 +28,7 @@ module Control_Unit
 					RegWrite = 1;
 					ALUOp = 2'b00;
 				end
-			7'b0010011: //addi
+			7'b0010011: //addi//slli
 				begin
 					Branch = 0;
 					MemRead = 0;

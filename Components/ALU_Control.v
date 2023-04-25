@@ -8,7 +8,12 @@ module ALU_Control
 	always @ (ALUOp or Funct)
 	begin
 		case(ALUOp)
-			2'b00: Operation = 4'b0010;
+			2'b00: begin
+			case(Funct)
+			     2'b0001: Operation = 4'b1111;
+			     default: Operation = 4'b0010;
+			endcase
+			end
 			2'b01: 
 			begin 
 			case(Funct)

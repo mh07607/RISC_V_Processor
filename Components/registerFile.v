@@ -5,7 +5,11 @@ module registerFile
    input [4:0]RD,  
    input RegWrite, clk, reset,  
    output reg [63:0]ReadData1,  
-   output reg [63:0]ReadData2 
+   output reg [63:0]ReadData2,
+   output [63:0] ith_address, //address of array[i], array[j] 
+   jth_address,
+   i,
+   j   
   ); 
   
   reg[63:0] Registers [31:0];    //initialize Registers with random values (using 'initial' block)
@@ -47,6 +51,10 @@ module registerFile
       Registers[31] = 64'd32;   
     end 
  
+ assign i = Registers[12];
+ assign j = Registers[13];
+ assign ith_address = Registers[14];
+ assign jth_address = Registers[17];
  //operation of writing data into a Register should always be done when  
  //positive edge of clock and RegWrite signal is asserted (or set, i.e. High)  
   always @ (posedge clk) 
