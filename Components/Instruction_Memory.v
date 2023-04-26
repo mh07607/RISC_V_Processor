@@ -7,22 +7,36 @@ module Instruction_Memory
 	
 	initial
 	begin
+//	//pipeline test cases
+//	inst_mem[0]=8'b10000011; //ld* x15, 0(x14) //7 
+//    inst_mem[1]=8'b00110111; 
+//    inst_mem[2]=8'b00000111; 
+//    inst_mem[3]=8'b00000000;
+    
+//    //00000000 00000111 10000111 00110011
+//	inst_mem[4] = 8'b00110011; //add x14, x15, x0
+//	inst_mem[5] = 8'b10000111;
+//	inst_mem[6] = 8'b00000111;
+//	inst_mem[7] = 8'b00000000;
+	
+	
+
 		inst_mem[0]=8'b00010011; //addi x12, x0, 1
 		inst_mem[1]=8'b00000110;
 		inst_mem[2]=8'b00010000;
 		inst_mem[3]=8'b00000000;
 		
 		//loop1 
-        inst_mem[4]=8'b01100011; //beq x12, x3, exit //2
-        inst_mem[5]=8'b00001000; 
-        inst_mem[6]=8'b00110110; 
-        inst_mem[7]=8'b00000100;  
+//        inst_mem[4]=8'b01100011; //beq x12, x3, exit //2
+//        inst_mem[5]=8'b00001000; 
+//        inst_mem[6]=8'b00110110; 
+//        inst_mem[7]=8'b00000100;  
         
         //continue 
-        inst_mem[8]=8'b10110011;  //add x13, x0, x12 //4
-        inst_mem[9]=8'b00000110;  
-        inst_mem[10]=8'b11000000;
-        inst_mem[11]=8'b00000000;
+//        inst_mem[8]=8'b10110011;  //add x13, x0, x12 //4
+//        inst_mem[9]=8'b00000110;  
+//        inst_mem[10]=8'b11000000;
+//        inst_mem[11]=8'b00000000;
          
         inst_mem[12]=8'b00010011; //slli x14, x13, 3*  (not sure if this will be needed) //5 
         inst_mem[13]=8'b10010111; 

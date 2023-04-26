@@ -1,0 +1,13 @@
+
+module HazardDetection(input  [4:0] IF_ID_RS1,
+     input  [4:0] IF_ID_RS2,
+     input  [4:0] ID_EX_rd,
+     input  ID_EX_MemRead,
+     output stall
+    );
+    
+    //checks for RAW DATA HAZARD. IF Mem Read is asserted then checks of the source and destination
+    //registers are equal, then asserts stall
+    assign stall = (ID_EX_MemRead) ? ((ID_EX_rd == IF_ID_RS1) || (ID_EX_rd == IF_ID_RS2)) : 0;
+    
+endmodule

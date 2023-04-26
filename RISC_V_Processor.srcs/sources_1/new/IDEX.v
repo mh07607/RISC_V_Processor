@@ -21,7 +21,7 @@
 
 
 module IDEX(input clk, 
-reset,
+reset,                                      
 input [63:0] PC_Out,
 input [63:0] ReadData1, 
 input [63:0] ReadData2, 
@@ -45,11 +45,23 @@ output reg [1:0] IDEX_WB,
 output reg [2:0] IDEX_M,
 output reg [2:0] IDEX_EX);
 
+
+
 always @(posedge clk)
 begin
    if(reset == 1) 
    begin //IF/ID stage
-    
+    IDEX_PC_Out <= 0;  //ID/EX stage
+    IDEX_ReadData1 <= 0;
+    IDEX_ReadData2 <= 0;
+    IDEX_imm_data <= 0;
+    IDEX_rs1 <= 0;
+    IDEX_rs2 <= 0;
+    IDEX_rd <= 0;
+    IDEX_funct <= 0;
+    IDEX_WB <= 0;
+    IDEX_M <= 0;
+    IDEX_EX <= 0;
    end
    else 
    begin

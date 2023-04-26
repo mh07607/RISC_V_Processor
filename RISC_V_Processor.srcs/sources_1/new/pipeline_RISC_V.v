@@ -70,8 +70,8 @@ jth_address,
 i,
 j,
 array_j,
-array_j_1 
-);
+array_j_1, 
+EXMEM_MemAddr);
     //wire [63:0] PC_In;
     wire [63:0] PC_Out; 
     //wire [31:0] Instruction;
@@ -79,7 +79,6 @@ array_j_1
     //wire [63:0] WriteData;
     //wire [63:0] ReadData1, ReadData2;
     //wire [63:0] imm_data;
-    wire [63:0] mux4out, mux5out;
     //wire [63:0] result;
     //wire [63:0] ReadData;
     //wire []
@@ -99,11 +98,27 @@ array_j_1
     wire [63:0] EXMEM_adder2out;    //EXMEM registers
     wire EXMEM_RegWrite; 
     wire [4:0] EXMEM_rd;
+    //wire [63:0] EXMEM_MemAddr; 
+    wire [63:0] EXMEM_WriteData;
+    wire [1:0] EXMEM_WB;
+    wire EXMEM_MemRead, EXMEM_MemWrite, EXMEM_Branch;
     
-    wire Mem_WB_RegWrite;
-    wire [4:0] Mem_WB_RD;
+    //MEMWB  registers
+    wire [4:0] MEMWB_rd;
+    wire [63:0] MEMWB_ReadData, MEMWB_MemAddr;
+    wire MEMWB_MemtoReg, MEMWB_RegWrite;
     
     wire [1:0] ForwardA, ForwardB;
+    wire [63:0] muxOut_ForwardA, muxOut_ForwardB;
+    
+    
+    Forwarding_Unit forwarding_unit(
+    EXMEM_RegWrite, 
+    EXMEM_rd, IDEX_rs1, IDEX_rs2,
+    MEMWB_RegWrite,
+    MEMWB_rd,
+    ForwardA, ForwardB
+    );
     
     
     Program_Counter PC(clk, reset, PC_In, PC_Out);
@@ -124,7 +139,7 @@ array_j_1
     
     ImmGen ig(IFID_Instruction, imm_data);
     
-    registerFile rf(WriteData, rs1, rs2, rd, RegWrite, clk, reset, ReadData1, ReadData2, 
+    registerFile rf(WriteData, rs1, rs2, MEMWB_rd, MEMWB_RegWrite, clk, reset, ReadData1, ReadData2, 
     ith_address, //address of array[i], array[j] 
     jth_address,
     i,j,
@@ -155,41 +170,34 @@ array_j_1
     
     Adder a2(IDEX_PC_Out, IDEX_imm_data*2, adder2Out);
     
-    Forwarding_Unit forwarding_unit(
-    Ex_Mem_RegWrite, 
-    Ex_Mem_RD, ID_Ex_RS1, ID_Ex_Rs2,
-    Mem_WB_RegWrite,
-    Mem_WB_RD,
-    ForwardA, ForwardB
-    );
-    
     ALU_Control ac(IDEX_EX[1:0], IDEX_funct, Operation);
     
-    Mux_three_to_one m4(mux4out);
+    Mux_three_to_one m4(IDEX_ReadData1, WriteData, EXMEM_MemAddr, ForwardA, muxOut_ForwardA);
     
-    Mux_three_to_one m5(mux5out);
+    Mux_three_to_one m5(IDEX_ReadData2, WriteData, EXMEM_MemAddr, ForwardB, muxOut_ForwardB);
     
-    Mux m1(mux5out, IDEX_imm_data, IDEX_EX[2], muxOut);
+    Mux m1(muxOut_ForwardB, IDEX_imm_data, IDEX_EX[2], muxOut);
     
-    ALU_64_bit alu64(mux4out, muxOut, Operation, result, zero);
+    ALU_64_bit alu64(muxOut_ForwardA, muxOut, Operation, result, zero);
     
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     EXMEM exmem(clk, reset, 
-input [63:0] IDEX_PC_Out, ALU_out, ALU_input2,
-input [4:0] rd, 
-input branch,
- input [1:0] write_back, Mem, 
- output reg [63:0] PC_ADD, ALU_output, ALU_second,
- output reg [4:0] dest_res,
- output reg [1:0] WB,
- output reg MemRead, MemWrite,Branch);;
+     adder2Out, result, muxOut_ForwardB,
+     IDEX_rd, 
+     IDEX_M[2],
+     IDEX_WB, IDEX_M[1:0],
+     zero, 
+     EXMEM_adder2Out, EXMEM_MemAddr, EXMEM_WriteData,
+     EXMEM_rd,
+     EXMEM_WB,
+     EXMEM_MemRead, EXMEM_MemWrite, EXMEM_Branch,
+     EXMEM_zero);
     
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
-    Mux m2(adderOut, adder2Out, (Branch & zero), PC_In);
     
-    Data_Memory dm(result, ReadData2, clk, MemWrite, MemRead, ReadData,
+    Data_Memory dm(EXMEM_MemAddr, EXMEM_WriteData, clk, EXMEM_MemWrite, EXMEM_MemRead, ReadData,
     element_0,
     element_1,
     element_2,
@@ -198,7 +206,23 @@ input branch,
     element_5,
     element_6);
     
-    Mux m3(result, ReadData, MemtoReg, WriteData);
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    MEMWB memwb(clk, reset,
+    ReadData,
+    EXMEM_MemAddr, 
+    EXMEM_rd,
+    EXMEM_WB,
+    MEMWB_ReadData,
+    MEMWB_MemAddr, 
+    MEMWB_rd,
+    MEMWB_MemtoReg, MEMWB_RegWrite );
+    
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    Mux m2(adderOut, EXMEM_adder2Out, (EXMEM_Branch & EXMEM_zero), PC_In);
+    
+    Mux m3(MEMWB_MemAddr, MEMWB_ReadData, MEMWB_MemtoReg, WriteData);
     
 endmodule
 

@@ -8,19 +8,37 @@ INFO: [VRFC 10-2263] Analyzing Verilog file "D:/uni/OneDrive - Habib University/
 INFO: [VRFC 10-311] analyzing module Control_Unit
 INFO: [VRFC 10-2263] Analyzing Verilog file "D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/Components/Data_Memory.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module Data_Memory
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/RISC_V_Processor.srcs/sources_1/new/EXMEM.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module EXMEM
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/RISC_V_Processor.srcs/sources_1/new/Forwarding_Unit.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module forwarding
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/RISC_V_Processor.srcs/sources_1/new/Hazard_Unit.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module HazardDetection
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/RISC_V_Processor.srcs/sources_1/new/IDEX.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module IDEX
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/RISC_V_Processor.srcs/sources_1/new/IFID.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module IFID
 INFO: [VRFC 10-2263] Analyzing Verilog file "D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/Components/ImmGen.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module ImmGen
 INFO: [VRFC 10-2263] Analyzing Verilog file "D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/Components/InsParser.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module InsParser
 INFO: [VRFC 10-2263] Analyzing Verilog file "D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/Components/Instruction_Memory.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module Instruction_Memory
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/RISC_V_Processor.srcs/sources_1/new/MEMWB.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module MEMWB
 INFO: [VRFC 10-2263] Analyzing Verilog file "D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/Components/Mux.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module Mux
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/RISC_V_Processor.srcs/sources_1/new/Mux_three_to_one.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Mux_three_to_one
 INFO: [VRFC 10-2263] Analyzing Verilog file "D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/Components/Program_Counter.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module Program_Counter
-INFO: [VRFC 10-2263] Analyzing Verilog file "D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/RISC_V_Processor.srcs/sources_1/new/RISC_V_Processor.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module RISC_V_Processor
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/RISC_V_Processor.srcs/sources_1/new/final_RISC_V.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module final_RISC_V
+INFO: [VRFC 10-2458] undeclared symbol Mux_Write, assumed default net type wire [D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/RISC_V_Processor.srcs/sources_1/new/final_RISC_V.v:158]
+INFO: [VRFC 10-2458] undeclared symbol EXMEM_adder2Out, assumed default net type wire [D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/RISC_V_Processor.srcs/sources_1/new/final_RISC_V.v:211]
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/RISC_V_Processor.srcs/sources_1/new/mux_control.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mux_control
 INFO: [VRFC 10-2263] Analyzing Verilog file "D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/Components/registerFile.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module registerFile
-INFO: [VRFC 10-2263] Analyzing Verilog file "D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/RISC_V_Processor.srcs/sim_1/new/tb_RISC_V.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module tb_RISC_V
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/uni/OneDrive - Habib University/Sem 4/CA/RISC_V_Processor/RISC_V_Processor.srcs/sim_1/new/tb_final_RISC_V.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tb_final_RISC_V

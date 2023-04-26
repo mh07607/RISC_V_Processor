@@ -1,0 +1,29 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../Components/ALU_64_bit.v" \
+"../../../../Components/ALU_Control.v" \
+"../../../../Components/Adder.v" \
+"../../../../Components/Control_Unit.v" \
+"../../../../Components/Data_Memory.v" \
+"../../../../RISC_V_Processor.srcs/sources_1/new/EXMEM.v" \
+"../../../../RISC_V_Processor.srcs/sources_1/new/Forwarding_Unit.v" \
+"../../../../RISC_V_Processor.srcs/sources_1/new/Hazard_Unit.v" \
+"../../../../RISC_V_Processor.srcs/sources_1/new/IDEX.v" \
+"../../../../RISC_V_Processor.srcs/sources_1/new/IFID.v" \
+"../../../../Components/ImmGen.v" \
+"../../../../Components/InsParser.v" \
+"../../../../Components/Instruction_Memory.v" \
+"../../../../RISC_V_Processor.srcs/sources_1/new/MEMWB.v" \
+"../../../../Components/Mux.v" \
+"../../../../RISC_V_Processor.srcs/sources_1/new/Mux_three_to_one.v" \
+"../../../../Components/Program_Counter.v" \
+"../../../../RISC_V_Processor.srcs/sources_1/new/final_RISC_V.v" \
+"../../../../RISC_V_Processor.srcs/sources_1/new/mux_control.v" \
+"../../../../Components/registerFile.v" \
+"../../../../RISC_V_Processor.srcs/sim_1/new/tb_final_RISC_V.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

@@ -21,7 +21,7 @@
 
 
 module IFID(input clk, input reset, input [31:0] Instruction, 
-input [63:0] PC_out, 
+input [63:0] PC_out, input IFID_Write,
 output reg [63:0] IFID_PC_Out,
 output reg [31:0] IFID_Instruction);
 
@@ -32,6 +32,11 @@ begin
     IFID_PC_Out <= 0;
     IFID_Instruction <= 0;   //IF/ID stage
    end
+   else if (~IFID_Write) 
+        begin
+          IFID_PC_Out <= IFID_PC_Out;
+          IFID_Instruction <= IFID_Instruction;
+        end
    else 
    begin
     IFID_Instruction <= Instruction;  //IF/ID stage

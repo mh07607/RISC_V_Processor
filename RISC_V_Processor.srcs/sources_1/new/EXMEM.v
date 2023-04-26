@@ -24,12 +24,15 @@ module EXMEM( input clk, reset,
 input [63:0] PC_addr, ALU_out, ALU_input2,
 input [4:0] rd, 
 input branch,
- input [1:0] write_back, Mem, 
+ input [1:0] write_back, Mem,
+ input zero, 
  output reg [63:0] PC_ADD, ALU_output, ALU_second,
  output reg [4:0] dest_res,
  output reg [1:0] WB,
- output reg MemRead, MemWrite,Branch);
- 
+ output reg MemRead, MemWrite,Branch,
+ EXMEM_zero);
+    
+
  //trigerring the lopp over positive edge of clock
  always @ (posedge clk)
  begin
@@ -45,18 +48,20 @@ begin
     MemRead=0;
     MemWrite=0;
     Branch=0;
+    EXMEM_zero = 0;
 end
 //else assigns the required values to the outputs
 else  
  begin
  WB= write_back;
- MemWrite= Mem[0];
- MemRead= Mem[1];
+ MemWrite= Mem[1];
+ MemRead= Mem[0];
  PC_ADD= PC_addr;
  ALU_output= ALU_out;
  ALU_second= ALU_input2; 
  dest_res= rd;
  Branch= branch;
+ EXMEM_zero = zero;
  end
  
 end
